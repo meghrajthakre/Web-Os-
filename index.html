@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Os</title>
+    <link rel="stylesheet" href='./styles/style.css'>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+
+        <div class="taskbar-left">
+            <div class="weather-toggle" onclick="openWeather()">
+                <i class="ri-sun-line"></i> Weather
+            </div>
+        </div>
+        <div class="taskbar-center">
+            <!-- Windows Button -->
+            <div class="start-btn" title="Start">
+                <i class="ri-microsoft-fill"></i>
+
+            </div>
+
+            <!-- Actual Input Search -->
+            <div class="search-bar">
+                <input type="text" placeholder="Type to search..." />
+            </div>
+
+            <!-- Open Windows -->
+            <div class="open-apps">
+                <div class="app-icon" title="Explorer">
+                    <i class="ri-folder-line"></i>
+                </div>
+                <div class="app-icon" title="Notes">
+                    <i class="ri-sticky-note-line"></i>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="taskbar-right">
+            <div class="batter-wifi">
+                <span><i class="ri-wifi-line"></i></span>
+                <span><i class="ri-volume-down-line"></i></span>
+                <span> <i class="ri-battery-low-line"></i></span>
+            </div>
+            <div class="clocks">
+                <span id="clock">14:42 PM</span>
+                <span id="date">22-06-2025</span>
+            </div>
+        </div>
+    </div>
+    <!-- context Menu -->
+    <ul id="contextMenu" class="hidden">
+        <li onclick="createFolder()"><span><i class="ri-add-circle-line"></i></span>New</li>
+        <li onclick="changeWallpaper()">🖼️ Change Wallpaper</li>
+        <li onclick="refresh()"><span><i class="ri-refresh-line"></i></span> Refresh</li>
+    </ul>
+    <!-- weather  -->
+    <!-- Weather Sidebar -->
+    <div id="weatherPanel" class="hidden">
+        <div class="weather-header">
+            <h2>🌦️ Weather</h2>
+            <button onclick="closeWeather()" title="Close">
+                <i class="ri-close-line"></i>
+            </button>
+
+        </div>
+
+        <div class="weather-content">
+            <img id="weatherIcon" src="" alt="Weather Icon" />
+            <h3 id="weatherTemp">--°C</h3>
+            <p id="weatherCondition">--</p>
+            <p id="weatherCity">--</p>
+
+            <div class="weather-extra">
+                <p>Feels Like: <span id="feelsLike">--°C</span></p>
+                <p>Humidity: <span id="humidity">--%</span></p>
+                <p>Wind: <span id="wind">--</span></p>
+                <p>Visibility: <span id="visibility">-- km</span></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Trigger Button in Taskbar -->
+
+
+    <script src="/js/index.js"></script>
+</body>
+
+</html>

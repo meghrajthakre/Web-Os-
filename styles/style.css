@@ -1,0 +1,367 @@
+:root {
+  --bg-color: #f0f0f0;
+  --window-bg: #ffffff;
+  --text-color: #1e1e1e;
+  --header-bg: #e0e0e0;
+  --taskbar-bg: rgba(240, 240, 240, 0.9);
+  --icon-text: #000000;
+  --glass-blur: blur(12px);
+  --border-color: rgba(0, 0, 0, 0.1);
+
+  --menu-bg: rgba(255, 255, 255, 0.1);
+  --menu-blur: blur(10px);
+  --menu-hover: rgba(255, 255, 255, 0.2);
+
+}
+/* :root {
+  --bg-color: #1e1e1e;
+  --window-bg: rgba(40, 40, 40, 0.8);
+  --text-color: #ffffff;
+  --header-bg: rgba(60, 60, 60, 0.9);
+  --taskbar-bg: rgba(30, 30, 30, 0.9);
+  --icon-text: #ffffff;
+  --glass-blur: blur(16px);
+  --border-color: rgba(255, 255, 255, 0.2);
+}
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* Body/Desktop */
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url('../assets/win11.jpg') no-repeat center center/cover;
+  backdrop-filter: blur(0.5px);
+}
+
+
+/* Taskbar */
+.taskbar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: var(--taskbar-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  backdrop-filter: blur(10px);
+}
+/* Taskbar Center Styling */
+.taskbar-center {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Start Button */
+.start-btn {
+  font-size: 20px;
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.start-btn:active{
+  scale: 0.90;
+}
+.start-btn i{
+  color: #0671FB;
+  font-size: 22px;
+}
+/* Search Bar Input */
+.search-bar {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: var(--glass-blur);
+  border-radius: 10px;
+  padding: 5px 12px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.05);
+}
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-color);
+  width: 200px;
+}
+
+/* Open Windows Icons */
+.open-apps {
+  display: flex;
+  gap: 10px;
+}
+.app-icon {
+  font-size: 18px;
+  color: var(--text-color);
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  cursor: pointer;
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 0 4px rgba(0,0,0,0.05);
+}
+
+.app-icon:active{
+  scale: 0.90;
+}
+.taskbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.weather-widget {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--text-color);
+  padding: 0 10px;
+  line-height: 1.2;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+}
+
+
+
+
+/* clock */
+
+#clock{
+  font-size: 14px;
+}
+.batter-wifi span{
+  font-size: 18px;
+}
+.taskbar-right{
+  display: flex;
+  align-items: center;
+  gap: 20px  ;
+}
+.clocks{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* context menu */
+#contextMenu {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1); /* semi-transparent */
+  backdrop-filter: blur(10px); /* glass blur */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 6px 0;
+  list-style: none;
+  z-index: 9999;
+  width: 180px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 500;
+}
+
+#contextMenu li {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#contextMenu li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+/* weather css */
+
+#weatherPanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  z-index: 10000;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+  color: white;
+  font-family: sans-serif;
+}
+
+#weatherPanel.show {
+  transform: translateX(0%);
+}
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.weather-header button {
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-header button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: black;
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+
+.weather-content {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.weather-content img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.weather-toggle {
+  /* position: fixed; */
+  bottom: 0;
+  bottom: 100px;
+  left: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: var(--text-color);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  z-index: 10001;
+}
+
+
+
+
+/* Responsive */
+/* RESPONSIVE LAYOUT ENHANCEMENTS */
+@media (max-width: 1024px) {
+  .search-bar input {
+    width: 150px;
+  }
+
+  .taskbar {
+    padding: 0 10px;
+  }
+
+  .start-btn {
+    padding: 4px 8px;
+  }
+
+  .open-apps {
+    gap: 6px;
+  }
+
+  .app-icon {
+    padding: 4px 6px;
+    font-size: 16px;
+  }
+
+  .batter-wifi span {
+    font-size: 16px;
+  }
+
+  .clocks span {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar input {
+    width: 120px;
+    font-size: 12px;
+  }
+
+  .start-btn i {
+    font-size: 18px;
+  }
+
+  .taskbar-center {
+    gap: 10px;
+  }
+
+  .weather-widget {
+    font-size: 11px;
+    padding: 0 6px;
+  }
+
+  .taskbar-right {
+    gap: 10px;
+  }
+
+  .clocks span {
+    font-size: 12px;
+  }
+
+  .taskbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 6px 10px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar {
+    display: none;
+  }
+
+  .open-apps {
+    display: none;
+  }
+
+  .taskbar-left {
+    gap: 8px;
+  }
+
+  .weather-widget {
+    display: none;
+  }
+
+  .start-btn {
+    padding: 4px;
+  }
+}
