@@ -184,18 +184,37 @@ function setupGlobalWindowControls() {
 
       if (!appWindow) return;
 
-      if (action == 'minimize') {
-        appWindow.style.display = 'none';
-        addToTaskbar(appId)
+      if (action === 'minimize') {
+        appWindow.classList.add('minimizing');
 
+        // ⏳ Wait for animation to finish before hiding
+        setTimeout(() => {
+          appWindow.style.display = 'none';
+          appWindow.classList.remove('minimizing');
+
+          addToTaskbar(appId); // already existing logic
+        }, 200); // matches animation duration
       }
-      else if (action == 'maximize') {
-        appWindow.classList.toggle('fullscreen')
+
+      else if (action === 'maximize') {
+        appWindow.classList.add('maximizing');
+        appWindow.classList.toggle('fullscreen');
+
+        // remove the animation class after it finishes
+        setTimeout(() => {
+          appWindow.classList.remove('maximizing');
+        }, 0);
       }
+
       else if (action === 'close') {
-        appWindow.style.display = 'none';
-        removeFromTaskbar(appId)
-      };
+        appWindow.classList.add('closing');
+
+        setTimeout(() => {
+          appWindow.style.display = 'none';
+          appWindow.classList.remove('closing');
+          removeFromTaskbar(appId);
+        }, 200); // Match animation duration
+      }
 
     })
   })

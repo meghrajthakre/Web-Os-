@@ -514,7 +514,49 @@ body {
     transform: scale(1);
   }
 }
+@keyframes minimizeApp {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+@keyframes maximizeApp {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes closeApp {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
 
+.app-window.closing {
+  animation: closeApp 0.2s ease forwards;
+}
+
+
+.app-window.maximizing {
+  animation: maximizeApp 0.2s ease forwards;
+}
+
+.app-window.minimizing {
+  animation: minimizeApp 0.2s ease forwards;
+}
 .app-window {
   animation: openApp 0.25s ease;
 }
