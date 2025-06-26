@@ -7,12 +7,13 @@
   --icon-text: #000000;
   --glass-blur: blur(12px);
   --border-color: rgba(0, 0, 0, 0.1);
-
+  --text-2-color: white;
   --menu-bg: rgba(255, 255, 255, 0.1);
   --menu-blur: blur(10px);
   --menu-hover: rgba(255, 255, 255, 0.2);
 
 }
+
 /* :root {
   --bg-color: #1e1e1e;
   --window-bg: rgba(40, 40, 40, 0.8);
@@ -38,9 +39,13 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: url('../assets/win11.jpg') no-repeat center center/cover;
-  backdrop-filter: blur(0.5px);
+  background: url('../assets/wallpaper/win11.jpg') no-repeat center center/cover;
+  /* backdrop-filter: blur(0.5px); */
 }
+
+/* fullscreen */
+
+
 
 
 /* Taskbar */
@@ -55,7 +60,9 @@ body {
   align-items: center;
   padding: 0 20px;
   backdrop-filter: blur(10px);
+  z-index: 99999;
 }
+
 /* Taskbar Center Styling */
 .taskbar-center {
   display: flex;
@@ -65,33 +72,36 @@ body {
 
 /* Start Button */
 .start-btn {
-  font-size: 20px;
   color: var(--text-color);
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: var(--glass-blur);
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.start-btn:active{
+
+.start-btn:active {
   scale: 0.90;
 }
-.start-btn i{
-  color: #0671FB;
-  font-size: 22px;
+
+.start-btn:hover {
+  backdrop-filter: var(--glass-blur)
 }
+
+.start-btn i {
+  color: #147BDC;
+  font-size: 36px;
+
+}
+
 /* Search Bar Input */
 .search-bar {
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: var(--glass-blur);
   border-radius: 10px;
   padding: 5px 12px;
-  box-shadow: 0 0 4px rgba(0,0,0,0.05);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
 }
+
 .search-bar input {
   border: none;
   outline: none;
@@ -104,25 +114,44 @@ body {
 /* Open Windows Icons */
 .open-apps {
   display: flex;
-  gap: 10px;
-}
-.app-icon {
-  font-size: 18px;
-  color: var(--text-color);
-  padding: 6px 10px;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 8px;
-  cursor: pointer;
-  backdrop-filter: var(--glass-blur);
-  box-shadow: 0 0 4px rgba(0,0,0,0.05);
+  gap: 20px;
+  align-items: center;
 }
 
-.app-icon:active{
+.app-icon {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+
+.app-icon:active {
   scale: 0.90;
 }
+
+.app-icon.active {
+  background: rgba(20, 120, 255, 0.15);
+  border: 1px solid rgba(20, 120, 255, 0.4);
+  box-shadow: 0 4px 8px rgba(20, 120, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
 .taskbar-left {
   display: flex;
   align-items: center;
+  flex-direction: row;
   gap: 15px;
 }
 
@@ -144,18 +173,21 @@ body {
 
 /* clock */
 
-#clock{
+#clock {
   font-size: 14px;
 }
-.batter-wifi span{
+
+.batter-wifi span {
   font-size: 18px;
 }
-.taskbar-right{
+
+.taskbar-right {
   display: flex;
   align-items: center;
-  gap: 20px  ;
+  gap: 20px;
 }
-.clocks{
+
+.clocks {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -165,15 +197,18 @@ body {
 /* context menu */
 #contextMenu {
   position: absolute;
-  background: rgba(255, 255, 255, 0.1); /* semi-transparent */
-  backdrop-filter: blur(10px); /* glass blur */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  background: rgba(255, 255, 255, 0.1);
+  /* semi-transparent */
+  backdrop-filter: blur(10px);
+  /* glass blur */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   padding: 6px 0;
   list-style: none;
   z-index: 9999;
-  width: 180px;
+  width: 200px;
   border-radius: 10px;
   color: #fff;
   font-weight: 500;
@@ -196,42 +231,44 @@ body {
 
 
 /* weather css */
-
 #weatherPanel {
   position: fixed;
   top: 0;
   left: 0;
   width: 300px;
   height: 100%;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--menu-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-right: 1px solid var(--border-color);
   padding: 20px;
   z-index: 10000;
   transform: translateX(-100%);
   transition: transform 0.4s ease;
   color: white;
-  font-family: sans-serif;
+
+  font-family: 'Segoe UI', sans-serif;
 }
 
 #weatherPanel.show {
   transform: translateX(0%);
 }
 
+/* 🔠 Panel Header */
 .weather-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .weather-header button {
   font-size: 16px;
   width: 32px;
   height: 32px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--menu-bg);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
   backdrop-filter: blur(6px);
   transition: all 0.25s ease;
@@ -241,13 +278,13 @@ body {
 }
 
 .weather-header button:hover {
-  background: rgba(255, 255, 255, 0.25);
-  color: black;
+  background: var(--menu-hover);
+  color: white;
   transform: scale(1.05);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-
+/* 🌤️ Panel Content */
 .weather-content {
   text-align: center;
   margin-top: 40px;
@@ -259,22 +296,120 @@ body {
   object-fit: contain;
 }
 
+#weatherTemp {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+#weatherCondition {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.extras {
+  margin-top: 20px;
+  font-size: 13px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* 🪟 Taskbar Left */
+.taskbar-left {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  height: 100%;
+}
+
+/* 🌦️ Taskbar Weather Box */
 .weather-toggle {
-  /* position: fixed; */
-  bottom: 0;
-  bottom: 100px;
-  left: 10px;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 4px 10px;
+  gap: 8px;
   cursor: pointer;
-  backdrop-filter: blur(6px);
-  z-index: 10001;
+}
+
+.weather-toggle span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.weather-toggle:hover {
+  background: var(--menu-hover);
+}
+
+/* 🌤️ Icon + Temp in Taskbar */
+.weather-toggle img#weatherIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.weather-toggle h3#weatherTempDown {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--icon-text);
+  margin: 0;
+}
+
+/* notepad */
+
+
+
+
+/* section */
+.app-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+
+
+.fullscreen {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  border-radius: 0 !important;
 }
 
 
 
+/* Window Controls */
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.window-controls button {
+  width: 32px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.window-controls button:hover {
+  background: var(--menu-hover);
+}
+
+/* Close Button Red on Hover */
+.window-controls .close:hover {
+  background: #e81123;
+  color: white;
+}
 
 /* Responsive */
 /* RESPONSIVE LAYOUT ENHANCEMENTS */
@@ -285,6 +420,7 @@ body {
 
   .taskbar {
     padding: 0 10px;
+
   }
 
   .start-btn {
@@ -364,4 +500,24 @@ body {
   .start-btn {
     padding: 4px;
   }
+}
+
+/* animation */
+
+@keyframes openApp {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.app-window {
+  animation: openApp 0.25s ease;
+}
+.app-window {
+  will-change: transform, opacity;
 }

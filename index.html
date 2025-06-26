@@ -7,6 +7,7 @@
     <title>Web Os</title>
     <link rel="stylesheet" href='./styles/style.css'>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/appsSyles/notepad.css">
 </head>
 
 <body>
@@ -16,9 +17,13 @@
 
         <div class="taskbar-left">
             <div class="weather-toggle" onclick="openWeather()">
-                <i class="ri-sun-line"></i> Weather
+                <span>
+                    <img id="weatherIcon" src="" />
+                    <h3 id="weatherTempDown">--°C</h3>
+                </span>
             </div>
         </div>
+
         <div class="taskbar-center">
             <!-- Windows Button -->
             <div class="start-btn" title="Start">
@@ -28,17 +33,18 @@
 
             <!-- Actual Input Search -->
             <div class="search-bar">
-                <input type="text" placeholder="Type to search..." />
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search" />
             </div>
 
             <!-- Open Windows -->
-            <div class="open-apps">
-                <div class="app-icon" title="Explorer">
-                    <i class="ri-folder-line"></i>
-                </div>
-                <div class="app-icon" title="Notes">
-                    <i class="ri-sticky-note-line"></i>
-                </div>
+            <div class="open-apps" id="openApps">
+                <!-- <div class="app-icon" data-app="notepad" title="notepad">
+                    <span>
+                        <img src="/assets/wallpaper/Windows_Notepad_icon.png" alt="">
+                    </span>
+                </div> -->
+
             </div>
         </div>
 
@@ -58,8 +64,8 @@
     </div>
     <!-- context Menu -->
     <ul id="contextMenu" class="hidden">
-        <li onclick="createFolder()"><span><i class="ri-add-circle-line"></i></span>New</li>
-        <li onclick="changeWallpaper()">🖼️ Change Wallpaper</li>
+        <li onclick="createFolder()"><span><i class="ri-add-circle-line"></i></span> New</li>
+        <li onclick="changeWallpaper()"><span><i class="ri-exchange-funds-line"></i></span> Change Wallpaper</li>
         <li onclick="refresh()"><span><i class="ri-refresh-line"></i></span> Refresh</li>
     </ul>
     <!-- weather  -->
@@ -74,7 +80,7 @@
         </div>
 
         <div class="weather-content">
-            <img id="weatherIcon" src="" alt="Weather Icon" />
+            <img id="weatherIcon1" src="" alt="Weather Icon" />
             <h3 id="weatherTemp">--°C</h3>
             <p id="weatherCondition">--</p>
             <p id="weatherCity">--</p>
@@ -88,11 +94,44 @@
         </div>
     </div>
 
+    <section class="app-sections">
+        <div class="show-notepad" onclick="showApp('notepad')">
+            <img src="/assets/wallpaper/Windows_Notepad_icon.png" alt="">
+            <span>Notepad</span>
 
-    <!-- Trigger Button in Taskbar -->
+        </div>
+
+
+        <!-- Notepad Window -->
+        <div class="app-window" id="notepad">
+            <div class="title-bar">
+                <div class="title-left">
+                    <img src="/assets/wallpaper/Windows_Notepad_icon.png" alt="">
+                    <span>Notepad</span>
+                    <div class="menu-bar">
+                        <span>File</span>
+                        <span>Edit</span>
+                        <span>View</span>
+                    </div>
+                </div>
+                <div class="window-controls">
+                    <button data-action="minimize" data-app="notepad"><i class="ri-subtract-line"></i></button>
+                    <button data-action="maximize" data-app="notepad"><i class="ri-square-line"></i></button>
+                    <button class="close" data-action="close" data-app="notepad"><i class="ri-close-line"></i></button>
+
+                </div>
+            </div>
+            <textarea placeholder="Start typing..."></textarea>
+        </div>
+
+
+
+    </section>
 
 
     <script src="/js/index.js"></script>
+    <script src="/js/apps/notepad.js"></script>
+
 </body>
 
 </html>
