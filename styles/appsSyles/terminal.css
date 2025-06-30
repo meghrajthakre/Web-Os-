@@ -1,0 +1,71 @@
+#terminal {
+    width: 700px;
+    height: 500px;
+    resize: both;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    color: #00ff00;
+    font-family: monospace;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+/* Terminal Output (scrollable area) */
+.terminal-body {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* ⬅️ pushes content to bottom */
+}
+
+
+/* Input bar at bottom */
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    background-color: #000;
+}
+
+.prompt {
+    margin-right: 5px;
+    font-weight: bold;
+    color: #00ff00;
+}
+
+#terminalInput {
+    background: transparent;
+    border: none;
+    color: #00ff00;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    caret-color: #00ff00;
+    font-family: monospace;
+}
+
+#terminalInput::placeholder {
+    color: #00ff00;
+    opacity: 0.5;
+}
+
+.blinking-cursor {
+    font-weight: bold;
+    font-size: 16px;
+    color: #00ff00;
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}

@@ -32,8 +32,6 @@
   box-sizing: border-box;
   font-family: 'Segoe UI', sans-serif;
 }
-
-
 /* Body/Desktop */
 body {
   width: 100vw;
@@ -42,11 +40,6 @@ body {
   background: url('../assets/wallpaper/win11.jpg') no-repeat center center/cover;
   /* backdrop-filter: blur(0.5px); */
 }
-
-/* fullscreen */
-
-
-
 
 /* Taskbar */
 .taskbar {
@@ -168,9 +161,6 @@ body {
   backdrop-filter: blur(6px);
 }
 
-
-
-
 /* clock */
 
 #clock {
@@ -192,7 +182,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
 
 /* context menu */
 #contextMenu {
@@ -227,8 +216,6 @@ body {
 .hidden {
   display: none;
 }
-
-
 
 /* weather css */
 #weatherPanel {
@@ -357,9 +344,6 @@ body {
 
 /* notepad */
 
-
-
-
 /* section */
 .app-sections {
   display: flex;
@@ -369,6 +353,7 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
+  flex-direction: column;
 }
 
 
@@ -410,6 +395,108 @@ body {
   background: #e81123;
   color: white;
 }
+
+.snap-left {
+  top: 0 !important;
+  left: 0 !important;
+  width: 50vw !important;
+  height: 100vh !important;
+  border-radius: 0 !important;
+}
+
+.snap-right {
+  top: 0 !important;
+  left: 50vw !important;
+  width: 50vw !important;
+  height: 100vh !important;
+  border-radius: 0 !important;
+}
+
+.snap-top {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  border-radius: 0 !important;
+}
+.app-window {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+}
+
+/* resize */
+.resize-handle {
+  position: absolute;
+  z-index: 10;
+}
+
+.resize-handle.right {
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  cursor: ew-resize;
+}
+
+.resize-handle.left {
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  cursor: ew-resize;
+}
+
+.resize-handle.bottom {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  cursor: ns-resize;
+}
+
+.resize-handle.top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  cursor: ns-resize;
+}
+
+.resize-handle.top-left,
+.resize-handle.top-right,
+.resize-handle.bottom-left,
+.resize-handle.bottom-right {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  position: absolute;
+}
+
+.resize-handle.top-left {
+  top: 0;
+  left: 0;
+  cursor: nwse-resize;
+}
+
+.resize-handle.top-right {
+  top: 0;
+  right: 0;
+  cursor: nesw-resize;
+}
+
+.resize-handle.bottom-left {
+  bottom: 0;
+  left: 0;
+  cursor: nesw-resize;
+}
+
+.resize-handle.bottom-right {
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
+}
+
 
 /* Responsive */
 /* RESPONSIVE LAYOUT ENHANCEMENTS */
@@ -509,36 +596,43 @@ body {
     opacity: 0;
     transform: scale(0.95);
   }
+
   100% {
     opacity: 1;
     transform: scale(1);
   }
 }
+
 @keyframes minimizeApp {
   0% {
     opacity: 1;
     transform: scale(1);
   }
+
   100% {
     opacity: 0;
     transform: scale(0.9);
   }
 }
+
 @keyframes maximizeApp {
   0% {
     transform: scale(0.95);
     opacity: 0.7;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
   }
 }
+
 @keyframes closeApp {
   0% {
     transform: scale(1);
     opacity: 1;
   }
+
   100% {
     transform: scale(0.9);
     opacity: 0;
@@ -557,9 +651,11 @@ body {
 .app-window.minimizing {
   animation: minimizeApp 0.2s ease forwards;
 }
+
 .app-window {
   animation: openApp 0.25s ease;
 }
+
 .app-window {
   will-change: transform, opacity;
 }

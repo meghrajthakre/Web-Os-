@@ -8,6 +8,7 @@
     <link rel="stylesheet" href='./styles/style.css'>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="./styles/appsSyles/notepad.css">
+    <link rel="stylesheet" href="./styles/appsSyles/terminal.css">
 </head>
 
 <body>
@@ -100,6 +101,11 @@
             <span>Notepad</span>
 
         </div>
+        <div class="show-notepad" onclick="showApp('terminal')">
+            <img src="/assets/icons/Windows_Terminal_Logo-removebg-preview.png" alt="">
+            <span>Terminal</span>
+
+        </div>
 
 
         <!-- Notepad Window -->
@@ -125,12 +131,36 @@
         </div>
 
 
+        <!-- Terminal Window -->
+        <div class="app-window" id="terminal">
+            <div class="title-bar">
+                <div class="title-left">
+                    <img src="/assets/icons/Windows_Terminal_Logo-removebg-preview.png" alt="">
+                    <span>Terminal</span>
+                </div>
+                <div class="window-controls">
+                    <button data-action="minimize" data-app="terminal"><i class="ri-subtract-line"></i></button>
+                    <button data-action="maximize" data-app="terminal"><i class="ri-square-line"></i></button>
+                    <button class="close" data-action="close" data-app="terminal"><i class="ri-close-line"></i></button>
+                </div>
+            </div>
+            <div class="terminal-wrapper">
+                <div class="terminal-body" id="terminalOutput"></div>
+
+                <div class="terminal-input-line">
+                    <input type="text" id="terminalInput" autofocus />
+                </div>
+            </div>
+        </div>
+
+
 
     </section>
 
 
     <script src="/js/index.js"></script>
     <script src="/js/apps/notepad.js"></script>
+    <script src="/js/apps/terminal.js"></script>
 
 </body>
 
