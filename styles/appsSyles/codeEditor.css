@@ -1,0 +1,64 @@
+#codeEditor {
+  width: 900px;
+  height: 600px;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  font-family: monospace;
+  display: none;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.editor-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.editor-toolbar {
+  display: flex;
+  gap: 10px;
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #555;
+}
+
+.editor-toolbar button {
+  background: none;
+  color: #fff;
+  border: none;
+  padding: 6px 15px;
+  cursor: pointer;
+}
+
+.editor-toolbar button.active {
+  background: #555;
+  border-radius: 5px;
+}
+
+.code-tab {
+  display: none;
+  background: #1e1e1e;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 15px;
+  font-size: 14px;
+  font-family: monospace;
+  line-height: 1.6;
+  flex: 1;
+  resize: none;
+  height: 200px;
+}
+
+.code-tab.active {
+  display: block;
+}
+
+iframe#preview {
+  flex: 1;
+  border: none;
+  background: rgb(59, 59, 59);
+}

@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/icons/images-removebg-preview (1).png" type="image/x-icon">
     <title>Web Os</title>
     <link rel="stylesheet" href='./styles/style.css'>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="./styles/appsSyles/notepad.css">
     <link rel="stylesheet" href="./styles/appsSyles/terminal.css">
+    <link rel="stylesheet" href="/styles/appsSyles/codeEditor.css">
 </head>
 
 <body>
@@ -106,6 +108,11 @@
             <span>Terminal</span>
 
         </div>
+        <div class="show-notepad" onclick="showApp('codeEditor')">
+            <img src="/assets/icons/code-removebg-preview.png" alt="">
+            <span>Code Editor</span>
+        </div>
+
 
 
         <!-- Notepad Window -->
@@ -154,6 +161,36 @@
         </div>
 
 
+        <!-- Code Editor App -->
+        <div class="app-window" id="codeEditor">
+            <div class="title-bar">
+                <div class="title-left">
+                    <img src="/assets/icons/code-removebg-preview.png" alt="">
+                    <span>Code Editor</span>
+                </div>
+                <div class="window-controls">
+                    <button data-action="minimize" data-app="codeEditor"><i class="ri-subtract-line"></i></button>
+                    <button data-action="maximize" data-app="codeEditor"><i class="ri-square-line"></i></button>
+                    <button class="close" data-action="close" data-app="codeEditor"><i
+                            class="ri-close-line"></i></button>
+                </div>
+            </div>
+
+            <div class="editor-wrapper">
+                <div class="editor-toolbar">
+                    <button onclick="switchTab('html')" id="tab-html" class="active">HTML</button>
+                    <button onclick="switchTab('css')" id="tab-css">CSS</button>
+                    <button onclick="switchTab('js')" id="tab-js">JS</button>
+                </div>
+
+                <textarea id="html" class="code-tab active" placeholder="Write HTML..."></textarea>
+                <textarea id="css" class="code-tab" placeholder="Write CSS..."></textarea>
+                <textarea id="js" class="code-tab" placeholder="Write JS..."></textarea>
+
+                <iframe id="preview">Preview</iframe>
+            </div>
+        </div>
+
 
     </section>
 
@@ -161,6 +198,7 @@
     <script src="/js/index.js"></script>
     <script src="/js/apps/notepad.js"></script>
     <script src="/js/apps/terminal.js"></script>
+    <script src="/js/apps/codeEditor.js"></script>
 
 </body>
 
